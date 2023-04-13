@@ -93,10 +93,17 @@ class Goals
     }
 
     /**
+     * @param bool $clear
      * @return bool
      */
-    public function needReload(): bool
+    public function needReload(bool $clear = false): bool
     {
-        return (bool)$this->session->getPlausibleReload();
+        $needReload = (bool)$this->session->getPlausibleReload();
+
+        if ($clear) {
+            $this->session->setPlausibleReload(false);
+        }
+
+        return $needReload;
     }
 }
