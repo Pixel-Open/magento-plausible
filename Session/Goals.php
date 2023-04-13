@@ -68,7 +68,6 @@ class Goals
     }
 
     /**
-     * @param bool $clear
      * @return mixed[]
      */
     public function get(): array
