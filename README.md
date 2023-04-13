@@ -59,15 +59,15 @@ The module includes goal events when enabled in module configuration.
 - Checkout
 - Order complete
 
-| Option   | Description                                                                      |
-|----------|----------------------------------------------------------------------------------|
-| Enabled  | Allow to track actions.                                                          |
-| Contact  | Plausible goal name when customer send a contact message. Leave empty to ignore. |
-| Register | Plausible goal name when creating the customer account. Leave empty to ignore.   |
-| Login    | Plausible goal name when customer was connected. Leave empty to ignore.          |
-| Cart     | Plausible goal name when customer goes to the cart. Leave empty to ignore.       |
-| Checkout | Plausible goal when customer access the checkout. Leave empty to ignore.         |
-| Order    | Plausible goal name when customer completes an order. Leave empty to ignore.     |
+| Option        | Description                                                                      |
+|---------------|----------------------------------------------------------------------------------|
+| Enabled       | Allow to track actions.                                                          |
+| Goal Contact  | Plausible goal name when customer send a contact message. Leave empty to ignore. |
+| Goal Register | Plausible goal name when creating the customer account. Leave empty to ignore.   |
+| Goal Login    | Plausible goal name when customer was connected. Leave empty to ignore.          |
+| Goal Cart     | Plausible goal name when customer goes to the cart. Leave empty to ignore.       |
+| Goal Checkout | Plausible goal when customer access the checkout. Leave empty to ignore.         |
+| Goal Order    | Plausible goal name when customer completes an order. Leave empty to ignore.     |
 
 You need to add goal events in your Plausible website configuration:
 
