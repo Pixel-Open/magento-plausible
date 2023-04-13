@@ -15,6 +15,8 @@ Add Plausible Analytics to Magento.
 - Compatible with multiple websites
 - Compatible with Magento OpenSource and Adobe Commerce
 
+![Plausible Analytics in Magento admin](screenshot.png)
+
 ## Requirements
 
 - Magento >= 2.4.4
