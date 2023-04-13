@@ -47,43 +47,43 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>Enable goal events</comment>
                 </field>
-                <field id="contact" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Contact</label>
+                <field id="contact" translate="comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Goal Contact</label>
                     <comment>Plausible goal name when customer send a contact message. Leave empty to ignore.</comment>
                     <depends>
                         <field id="*/goals/enabled">1</field>
                     </depends>
                 </field>
-                <field id="register" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Register</label>
+                <field id="register" translate="comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Goal Register</label>
                     <comment>Plausible goal name when creating the customer account. Leave empty to ignore.</comment>
                     <depends>
                         <field id="*/goals/enabled">1</field>
                     </depends>
                 </field>
-                <field id="login" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Login</label>
+                <field id="login" translate="comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Goal Login</label>
                     <comment>Plausible goal name when customer was connected. Leave empty to ignore.</comment>
                     <depends>
                         <field id="*/goals/enabled">1</field>
                     </depends>
                 </field>
-                <field id="cart" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Cart</label>
+                <field id="cart" translate="comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Goal Cart</label>
                     <comment>Plausible goal name when customer goes to the cart. Leave empty to ignore.</comment>
                     <depends>
                         <field id="*/goals/enabled">1</field>
                     </depends>
                 </field>
-                <field id="checkout" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Checkout</label>
+                <field id="checkout" translate="comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Goal Checkout</label>
                     <comment>Plausible goal when customer access the checkout. Leave empty to ignore.</comment>
                     <depends>
                         <field id="*/goals/enabled">1</field>
                     </depends>
                 </field>
-                <field id="order" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Order</label>
+                <field id="order" translate="comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Goal Order</label>
                     <comment>Plausible goal name when customer completes an order. Leave empty to ignore.</comment>
                     <depends>
                         <field id="*/goals/enabled">1</field>
