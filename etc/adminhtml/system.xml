@@ -84,7 +84,7 @@
                 </field>
                 <field id="order" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Order</label>
-                    <comment>Plausible goal name when customer submits order. Leave empty to ignore.</comment>
+                    <comment>Plausible goal name when customer completes an order. Leave empty to ignore.</comment>
                     <depends>
                         <field id="*/goals/enabled">1</field>
                     </depends>
