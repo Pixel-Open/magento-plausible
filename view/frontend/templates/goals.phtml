@@ -1,0 +1,10 @@
+<?php /** @var \PixelOpen\Plausible\Block\Goals $block */ ?>
+<?php if ($block->isEnabled()): ?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
+        }
+    }
+</script>
+<?php endif; ?>

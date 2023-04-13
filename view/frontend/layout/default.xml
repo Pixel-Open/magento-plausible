@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (C) 2023 Pixel Développement
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <block name="pixel_open_plausible_script" class="PixelOpen\Plausible\Block\Script" ifconfig="pixel_open_plausible/tracking/enabled" />
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block name="pixel_open_plausible_goals" class="PixelOpen\Plausible\Block\Goals" ifconfig="pixel_open_plausible/goals/enabled">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="plausible" xsi:type="array">
+                                <item name="component" xsi:type="string">PixelOpen_Plausible/js/goals</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="reload" xsi:type="boolean">false</item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

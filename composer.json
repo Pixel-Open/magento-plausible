@@ -1,0 +1,30 @@
+{
+  "name": "pixelopen/magento-plausible",
+  "description": "Add Plausible Analytics to Magento",
+  "require": {
+    "magento/module-backend": "*",
+    "magento/module-checkout": "*",
+    "magento/module-config": "*",
+    "magento/module-contact": "*",
+    "magento/module-customer": "*",
+    "magento/module-store": "*",
+    "magento/framework": "*"
+  },
+  "type": "magento2-module",
+  "version": "100.1.0",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "PixelOpen\\Plausible\\": ""
+    }
+  },
+  "authors": [
+    {
+      "name": "Pixel Open",
+      "homepage": "https://pixel-open.org/",
+      "role": "Developer"
+    }
+  ]
+}

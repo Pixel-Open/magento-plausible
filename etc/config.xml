@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (C) 2023 Pixel Développement
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <pixel_open_plausible>
+            <tracking>
+                <enabled>0</enabled>
+                <instance_url>https://plausible.io</instance_url>
+            </tracking>
+            <admin>
+                <enabled>0</enabled>
+            </admin>
+            <goals>
+                <enabled>0</enabled>
+                <contact>contact</contact>
+                <register>register</register>
+                <login>login</login>
+                <cart>cart</cart>
+                <checkout>checkout</checkout>
+                <order>order</order>
+            </goals>
+        </pixel_open_plausible>
+    </default>
+</config>

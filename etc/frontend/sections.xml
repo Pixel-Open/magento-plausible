@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (C) 2023 Pixel Développement
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
+    <action name="contact/index/post">
+        <section name="plausible" />
+    </action>
+    <action name="customer/account/createPost">
+        <section name="plausible" />
+    </action>
+    <action name="customer/account/LoginPost">
+        <section name="plausible" />
+    </action>
+</config>

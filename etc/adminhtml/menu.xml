@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (C) 2023 Pixel Développement
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="PixelOpen_Plausible::plausible" title="Plausible" module="PixelOpen_Plausible" parent="Magento_Backend::marketing" sortOrder="100" resource="PixelOpen_Plausible::plausible" dependsOnConfig="pixel_open_plausible/admin/enabled" />
+        <add id="PixelOpen_Plausible::plausible_stats" title="Analytics" module="PixelOpen_Plausible" parent="PixelOpen_Plausible::plausible" sortOrder="10" resource="PixelOpen_Plausible::plausible_stats" action="pixel_plausible/stats" />
+    </menu>
+</config>
