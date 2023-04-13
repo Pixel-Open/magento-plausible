@@ -146,6 +146,12 @@ The **send** method allows to send goals. The goal will persist until **send** m
 
 **Note:** the page must be completely displayed before the goals are sent. The "plausible" section is refreshed when the customer data is reloaded.
 
+Add custom params if needed:
+
+```php
+$this->goals->add('my_page_view_action', ['foo' => 'bar'])->send();
+```
+
 To send goals on a full cached page after any action, add the action in a `sections.xml` file in `etc/frontend` directory.
 
 ```xml
@@ -180,4 +186,10 @@ define(
         });
     }
 );
+```
+
+To simply send a goal in JavaScript, use the **plausible** method:
+
+```javascript
+plausible('goalName', {'props': {'foo': 'bar'}});
 ```
