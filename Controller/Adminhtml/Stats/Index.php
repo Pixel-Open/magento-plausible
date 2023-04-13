@@ -11,7 +11,6 @@ namespace PixelOpen\Plausible\Controller\Adminhtml\Stats;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -20,7 +19,7 @@ use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Api\WebsiteRepositoryInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
-class Index extends Action implements ActionInterface, HttpGetActionInterface
+class Index extends Action implements HttpGetActionInterface
 {
     /**
      * Authorization level of a basic admin session
