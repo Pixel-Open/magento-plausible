@@ -59,7 +59,7 @@ class Goals extends Template
      */
     public function getJsLayout(): string
     {
-        $this->jsLayout['components']['plausible']['config']['reload'] = $this->goals->needReload(true);
+        $this->jsLayout['components']['plausible']['config']['reload'] = $this->goals->needReload();
 
         return parent::getJsLayout();
     }

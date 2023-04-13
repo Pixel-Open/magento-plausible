@@ -47,7 +47,7 @@ class GoalCart
     public function afterExecute(Index $subject, ResultInterface $result): ResultInterface
     {
         if ($this->checkoutSession->getQuote()->hasItems()) {
-            $this->goals->add(Config::PLAUSIBLE_GOAL_CART)->reload();
+            $this->goals->add(Config::PLAUSIBLE_GOAL_CART)->send();
         }
 
         return $result;

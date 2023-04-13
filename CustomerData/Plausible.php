@@ -30,8 +30,12 @@ class Plausible implements SectionSourceInterface
      */
     public function getSectionData(): array
     {
+        $goals = $this->goals->get();
+
+        $this->goals->reset();
+
         return [
-            'goals' => $this->goals->get(true)
+            'goals' => $goals
         ];
     }
 }

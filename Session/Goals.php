@@ -71,21 +71,15 @@ class Goals
      * @param bool $clear
      * @return mixed[]
      */
-    public function get(bool $clear = false): array
+    public function get(): array
     {
-        $goals = $this->session->getPlausibleGoals() ?: [];
-
-        if ($clear) {
-            $this->set([]);
-        }
-
-        return $goals;
+        return $this->session->getPlausibleGoals() ?: [];
     }
 
     /**
      * @return $this
      */
-    public function reload(): Goals
+    public function send(): Goals
     {
         $this->session->setPlausibleReload(true);
 
@@ -93,17 +87,21 @@ class Goals
     }
 
     /**
-     * @param bool $clear
      * @return bool
      */
-    public function needReload(bool $clear = false): bool
+    public function needReload(): bool
     {
-        $needReload = (bool)$this->session->getPlausibleReload();
+        return (bool)$this->session->getPlausibleReload();
+    }
 
-        if ($clear) {
-            $this->session->setPlausibleReload(false);
-        }
+    /**
+     * @return Goals
+     */
+    public function reset(): Goals
+    {
+        $this->session->setPlausibleGoals([]);
+        $this->session->setPlausibleReload(false);
 
-        return $needReload;
+        return $this;
     }
 }

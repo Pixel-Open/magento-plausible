@@ -69,7 +69,7 @@ class GoalOrder
     public function afterExecute(Success $subject, ResultInterface $result): ResultInterface
     {
         if ($result instanceof Page) {
-            $this->goals->reload();
+            $this->goals->send();
         }
 
         return $result;

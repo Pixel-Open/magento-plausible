@@ -38,7 +38,7 @@ class GoalCheckout
     public function afterExecute(Index $subject, ResultInterface $result): ResultInterface
     {
         if ($result instanceof Page) {
-            $this->goals->add(Config::PLAUSIBLE_GOAL_CHECKOUT)->reload();
+            $this->goals->add(Config::PLAUSIBLE_GOAL_CHECKOUT)->send();
         }
 
         return $result;
