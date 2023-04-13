@@ -18,7 +18,7 @@ Add Plausible Analytics to Magento.
 ## Requirements
 
 - Magento >= 2.4.4
-- PHP >= 7.2.0
+- PHP >= 7.4.0
 
 ## Installation
 
