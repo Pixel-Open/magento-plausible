@@ -13,7 +13,8 @@ Add Plausible Analytics to Magento.
 - Manage goals on specific actions (contact, register, checkout, order...)
 - Allow use of your own Plausible instance
 - Compatible with multiple websites
-- Compatible with Magento OpenSource and Adobe Commerce
+- Compatible with Magento OpenSource, Mage-OS and Adobe Commerce
+- Compatible with Hyvä theme
 
 ![Plausible Analytics in Magento admin](screenshot.png)
 
@@ -84,6 +85,10 @@ Default goal names are:
 - checkout
 - order
 
+With the goal "order", the "total" property is sent. You need to add the custom property "total" in the Plausible website settings.
+
+![Plausible Properties](properties.png)
+
 ### Custom Goal
 
 In a module, declare the new goals in the `config.xml` file:
@@ -146,7 +151,7 @@ The **send** method allows to send goals. The goal will persist until **send** m
 
 **Note:** the page must be completely displayed before the goals are sent. The "plausible" section is refreshed when the customer data is reloaded.
 
-Add custom params if needed:
+Add custom properties if needed:
 
 ```php
 $this->goals->add('my_page_view_action', ['foo' => 'bar'])->send();

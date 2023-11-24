@@ -1,0 +1,31 @@
+<?php /** @var \PixelOpen\Plausible\Block\Goals $block */ ?>
+<?php /** @var \Magento\Framework\Escaper $escaper */ ?>
+<?php if ($block->isEnabled()): ?>
+<script>
+    'use strict';
+
+    function PlausibleGoals () {
+        this.initPlausibleGoals = function (event) {
+            const sectionData = event.detail.data;
+            if (sectionData) {
+                const goals = sectionData['plausible']['goals'];
+
+                Object.keys(goals).map(function(name) {
+                    plausible(name, goals[name]);
+                });
+
+                if (Object.keys(goals).length) {
+                    sectionData['plausible']['goals'] = {}
+                    hyva.getBrowserStorage().setItem('mage-cache-storage', JSON.stringify(sectionData));
+                }
+            }
+        }
+    }
+
+    window.addEventListener('private-content-loaded', new PlausibleGoals().initPlausibleGoals);
+
+    <?php foreach ($block->getGoals() as $name => $params): ?>
+        plausible('<?= $escaper->escapeJs($name) ?>', <?= /* @noEscape */ $params ?>);
+    <?php endforeach; ?>
+</script>
+<?php endif; ?>
