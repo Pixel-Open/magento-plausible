@@ -2,6 +2,7 @@
   "name": "pixelopen/magento-plausible",
   "description": "Add Plausible Analytics to Magento",
   "require": {
+    "php": "^8",
     "magento/module-backend": "*",
     "magento/module-checkout": "*",
     "magento/module-config": "*",
@@ -11,7 +12,7 @@
     "magento/framework": "*"
   },
   "type": "magento2-module",
-  "version": "100.2.0",
+  "version": "100.2.1",
   "autoload": {
     "files": [
       "registration.php"

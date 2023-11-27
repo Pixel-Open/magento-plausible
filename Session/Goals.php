@@ -33,17 +33,18 @@ class Goals
     /**
      * Add or update a goal
      *
-     * @param string   $goal
-     * @param string[] $params
+     * @param string $goal
+     * @param string[] $properties
+     * @param mixed[] $additional
      * @return Goals
      */
-    public function add(string $goal, array $params = []): Goals
+    public function add(string $goal, array $properties = [], array $additional = []): Goals
     {
         $goals = $this->get();
 
         $name = $this->config->getGoalName($goal);
         if (!empty($name)) {
-            $goals[$name] = ['props' => $params];
+            $goals[$name] = array_merge(['props' => $properties], $additional);
         }
 
         return $this->set($goals);

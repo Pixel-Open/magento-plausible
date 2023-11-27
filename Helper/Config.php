@@ -18,6 +18,7 @@ class Config extends AbstractHelper
     public const PLAUSIBLE_TRACKING_INSTANCE_URL = 'pixel_open_plausible/tracking/instance_url';
     public const PLAUSIBLE_GOALS_ENABLED = 'pixel_open_plausible/goals/enabled';
     public const PLAUSIBLE_GOALS_TYPE = 'pixel_open_plausible/goals/';
+    public const PLAUSIBLE_REVENUE_TRACKING_ENABLED = 'pixel_open_plausible/revenue_tracking/enabled';
     public const PLAUSIBLE_ADMIN_STATS_ENABLED = 'pixel_open_plausible/admin/enabled';
     public const PLAUSIBLE_ADMIN_STATS_SHARED_LINK = 'pixel_open_plausible/admin/shared_link';
 
@@ -69,6 +70,16 @@ class Config extends AbstractHelper
     }
 
     /**
+     * Is Revenue Tracking enabled
+     *
+     * @return bool
+     */
+    public function isRevenueTrackingEnabled(): bool
+    {
+        return $this->scopeConfig->isSetFlag(self::PLAUSIBLE_REVENUE_TRACKING_ENABLED, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
      * Retrieve goal name
      *
      * @param string $goal
@@ -103,7 +114,7 @@ class Config extends AbstractHelper
             $websiteId
         );
 
-        if (strpos($link, $this->getInstanceUrl() . '/share') !== 0) {
+        if (!str_starts_with($link, $this->getInstanceUrl() . '/share')) {
             return '';
         }
 

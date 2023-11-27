@@ -16,3 +16,4 @@
 "Plausible goal name when customer goes to the cart. Leave empty to ignore.","Plausible goal name when customer goes to the cart. Leave empty to ignore."
 "Plausible goal when customer access the checkout. Leave empty to ignore.","Plausible goal when customer access the checkout. Leave empty to ignore."
 "Plausible goal name when customer completes an order. Leave empty to ignore.","Plausible goal name when customer completes an order. Leave empty to ignore."
+"Enable Revenue Tracking (Plausible business plan only). Revenue is sent with the order goal.","Enable Revenue Tracking (Plausible business plan only). Revenue is sent with the order goal."

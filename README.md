@@ -21,7 +21,7 @@ Add Plausible Analytics to Magento.
 ## Requirements
 
 - Magento >= 2.4.4
-- PHP >= 7.4.0
+- PHP >= 8.0.0
 
 ## Installation
 
@@ -85,9 +85,13 @@ Default goal names are:
 - checkout
 - order
 
-With the goal "order", the "total" property is sent. You need to add the custom property "total" in the Plausible website settings.
+### Revenue Tracking
 
-![Plausible Properties](properties.png)
+With the goal "order", the "revenue tracking" is sent. This feature is only available with Plausible business plan.
+
+When you add the "order" goal, you need to enable the "Revenue Tracking":
+
+![Plausible Revenue Tracking](revenue.png)
 
 ### Custom Goal
 
@@ -151,7 +155,7 @@ The **send** method allows to send goals. The goal will persist until **send** m
 
 **Note:** the page must be completely displayed before the goals are sent. The "plausible" section is refreshed when the customer data is reloaded.
 
-Add custom properties if needed:
+Add custom properties if needed (Business Plan only):
 
 ```php
 $this->goals->add('my_page_view_action', ['foo' => 'bar'])->send();

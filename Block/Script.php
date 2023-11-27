@@ -63,4 +63,18 @@ class Script extends Template
     {
         return $this->config->getInstanceUrl();
     }
+
+    /**
+     * @return string
+     */
+    public function getScriptUrl(): string
+    {
+        $script = $this->getInstanceUrl() . '/js/script.js';
+
+        if ($this->config->isRevenueTrackingEnabled()) {
+            $script = $this->getInstanceUrl() . '/js/script.revenue.js';
+        }
+
+        return $script;
+    }
 }

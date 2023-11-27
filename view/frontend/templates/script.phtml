@@ -1,6 +1,6 @@
 <?php /** @var \PixelOpen\Plausible\Block\Script $block */ ?>
 <?php /** @var \Magento\Framework\Escaper $escaper */ ?>
 <?php if ($block->isEnabled()): ?>
-<script defer data-domain="<?= $block->getHost() ?>" src="<?= $escaper->escapeUrl($block->getInstanceUrl()) ?>/js/script.js"></script>
+<script defer data-domain="<?= $block->getHost() ?>" src="<?= $escaper->escapeUrl($block->getScriptUrl()) ?>"></script>
 <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 <?php endif; ?>

@@ -2,7 +2,7 @@
 <?php /** @var \Magento\Framework\Escaper $escaper */ ?>
 <?php if ($block->canShow()): ?>
     <?php if ($block->getSharedLink()): ?>
-        <iframe plausible-embed src="<?= $escaper->escapeUrl($block->getSharedLink()) ?>&embed=true&theme=light" scrolling="no" frameborder="0" loading="lazy" style="width: 1px; min-width: 100%; height: 1600px;"></iframe>
+        <iframe plausible-embed src="<?= $escaper->escapeUrl($block->getSharedLink()) ?>&embed=true&theme=light" scrolling="no" frameborder="0" loading="lazy" style="width: 1px; min-width: 100%; height: 2100px;"></iframe>
         <div style="font-size: 14px; padding-bottom: 14px;">Stats powered by <a target="_blank" style="color: #4F46E5; text-decoration: underline;" href="https://plausible.io">Plausible Analytics</a></div>
         <script async src="<?= $escaper->escapeUrl($block->getInstanceUrl()) ?>/js/embed.host.js"></script>
     <?php else: ?>
