@@ -24,7 +24,7 @@ class Index extends Action implements HttpGetActionInterface
     /**
      * Authorization level of a basic admin session
      */
-    const ADMIN_RESOURCE = 'PixelOpen_Plausible::plausible_stats';
+    public const ADMIN_RESOURCE = 'PixelOpen_Plausible::plausible_stats';
 
     protected PageFactory $resultPageFactory;
 
@@ -32,12 +32,6 @@ class Index extends Action implements HttpGetActionInterface
 
     protected StoreManagerInterface $storeManager;
 
-    /**
-     * @param Context $context
-     * @param PageFactory $resultPageFactory
-     * @param WebsiteRepositoryInterface $websiteRepository
-     * @param StoreManagerInterface $storeManager
-     */
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory,
@@ -46,22 +40,19 @@ class Index extends Action implements HttpGetActionInterface
     ) {
         $this->resultPageFactory = $resultPageFactory;
         $this->websiteRepository = $websiteRepository;
-        $this->storeManager      = $storeManager;
+        $this->storeManager = $storeManager;
 
         parent::__construct($context);
     }
 
-    /**
-     * @return ResultInterface
-     */
     public function execute(): ResultInterface
     {
         $result = $this->resultPageFactory->create();
 
         try {
-            $result->getConfig()->getTitle()->prepend(
-                __('Plausible Analytics: %1', $this->getWebsite()->getName())
-            );
+            $result->getConfig()
+                ->getTitle()
+                ->prepend(__('Plausible Analytics: %1', $this->getWebsite()->getName()));
         } catch (NoSuchEntityException $exception) {
             $this->messageManager->addErrorMessage(
                 __('The website with id %1 does not exist', $this->getWebsiteId())
@@ -75,9 +66,6 @@ class Index extends Action implements HttpGetActionInterface
 
     /**
      * Retrieve current website view
-     *
-     * @return WebsiteInterface
-     * @throws NoSuchEntityException
      */
     public function getWebsite(): WebsiteInterface
     {
@@ -86,14 +74,10 @@ class Index extends Action implements HttpGetActionInterface
 
     /**
      * Retrieve the website identifier
-     *
-     * @return int
      */
     public function getWebsiteId(): int
     {
-        return (int)$this->getRequest()->getParam(
-            'website',
-            $this->storeManager->getDefaultStoreView()->getWebsiteId()
-        );
+        return (int) $this->getRequest()
+            ->getParam('website', $this->storeManager->getDefaultStoreView() ->getWebsiteId());
     }
 }

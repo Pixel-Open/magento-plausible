@@ -18,9 +18,6 @@ class GoalRegister
 {
     protected Goals $goals;
 
-    /**
-     * @param Goals $goals
-     */
     public function __construct(
         Goals $goals
     ) {
@@ -29,13 +26,11 @@ class GoalRegister
 
     /**
      * Add goal after customer has registered
-     *
-     * @param AccountManagementInterface $subject
-     * @param CustomerInterface $result
-     * @return CustomerInterface
      */
-    public function afterCreateAccount(AccountManagementInterface $subject, CustomerInterface $result): CustomerInterface
-    {
+    public function afterCreateAccount(
+        AccountManagementInterface $subject,
+        CustomerInterface $result
+    ): CustomerInterface {
         $this->goals->add(Config::PLAUSIBLE_GOAL_REGISTER);
 
         return $result;

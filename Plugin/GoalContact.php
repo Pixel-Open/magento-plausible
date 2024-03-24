@@ -17,9 +17,6 @@ class GoalContact
 {
     protected Goals $goals;
 
-    /**
-     * @param Goals $goals
-     */
     public function __construct(
         Goals $goals
     ) {
@@ -28,9 +25,6 @@ class GoalContact
 
     /**
      * Add goal after message was sent
-     *
-     * @param MailInterface $subject
-     * @return void
      */
     public function afterSend(MailInterface $subject): void
     {

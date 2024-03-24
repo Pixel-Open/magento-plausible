@@ -9,16 +9,13 @@ declare(strict_types=1);
 
 namespace PixelOpen\Plausible\CustomerData;
 
-use PixelOpen\Plausible\Session\Goals;
 use Magento\Customer\CustomerData\SectionSourceInterface;
+use PixelOpen\Plausible\Session\Goals;
 
 class Plausible implements SectionSourceInterface
 {
     protected Goals $goals;
 
-    /**
-     * @param Goals $goals
-     */
     public function __construct(
         Goals $goals
     ) {
@@ -35,7 +32,7 @@ class Plausible implements SectionSourceInterface
         $this->goals->reset();
 
         return [
-            'goals' => $goals
+            'goals' => $goals,
         ];
     }
 }

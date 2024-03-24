@@ -15,32 +15,41 @@ use Magento\Store\Model\ScopeInterface;
 class Config extends AbstractHelper
 {
     public const PLAUSIBLE_TRACKING_ENABLED = 'pixel_open_plausible/tracking/enabled';
+
     public const PLAUSIBLE_TRACKING_INSTANCE_URL = 'pixel_open_plausible/tracking/instance_url';
+
     public const PLAUSIBLE_GOALS_ENABLED = 'pixel_open_plausible/goals/enabled';
+
     public const PLAUSIBLE_GOALS_TYPE = 'pixel_open_plausible/goals/';
+
     public const PLAUSIBLE_REVENUE_TRACKING_ENABLED = 'pixel_open_plausible/revenue_tracking/enabled';
+
     public const PLAUSIBLE_ADMIN_STATS_ENABLED = 'pixel_open_plausible/admin/enabled';
+
     public const PLAUSIBLE_ADMIN_STATS_SHARED_LINK = 'pixel_open_plausible/admin/shared_link';
 
     public const PLAUSIBLE_SAAS_INSTANCE_URL = 'https://plausible.io';
 
     public const PLAUSIBLE_GOAL_CONTACT = 'contact';
+
     public const PLAUSIBLE_GOAL_REGISTER = 'register';
+
     public const PLAUSIBLE_GOAL_LOGIN = 'login';
+
     public const PLAUSIBLE_GOAL_CART = 'cart';
+
     public const PLAUSIBLE_GOAL_CHECKOUT = 'checkout';
+
     public const PLAUSIBLE_GOAL_ORDER = 'order';
 
     /**
      * Retrieve Instance URL
-     *
-     * @return string
      */
     public function getInstanceUrl(): string
     {
         $url = $this->scopeConfig->getValue(self::PLAUSIBLE_TRACKING_INSTANCE_URL, ScopeInterface::SCOPE_STORE);
 
-        if (!$url) {
+        if (! $url) {
             $url = self::PLAUSIBLE_SAAS_INSTANCE_URL;
         }
 
@@ -49,8 +58,6 @@ class Config extends AbstractHelper
 
     /**
      * Is tracking enabled
-     *
-     * @return bool
      */
     public function isTrackingEnabled(): bool
     {
@@ -59,8 +66,6 @@ class Config extends AbstractHelper
 
     /**
      * Is tracking enabled
-     *
-     * @return bool
      */
     public function isGoalsEnabled(): bool
     {
@@ -71,8 +76,6 @@ class Config extends AbstractHelper
 
     /**
      * Is Revenue Tracking enabled
-     *
-     * @return bool
      */
     public function isRevenueTrackingEnabled(): bool
     {
@@ -81,19 +84,14 @@ class Config extends AbstractHelper
 
     /**
      * Retrieve goal name
-     *
-     * @param string $goal
-     * @return string
      */
     public function getGoalName(string $goal): string
     {
-        return (string)$this->scopeConfig->getValue(self::PLAUSIBLE_GOALS_TYPE . $goal, ScopeInterface::SCOPE_STORE);
+        return (string) $this->scopeConfig->getValue(self::PLAUSIBLE_GOALS_TYPE . $goal, ScopeInterface::SCOPE_STORE);
     }
 
     /**
      * Is Admin Stats enabled
-     *
-     * @return bool
      */
     public function isAdminStatsEnabled(): bool
     {
@@ -102,19 +100,16 @@ class Config extends AbstractHelper
 
     /**
      * Retrieve admin stats shared link
-     *
-     * @param int|null $websiteId
-     * @return string
      */
     public function getAdminStatsSharedLink(?int $websiteId = null): string
     {
-        $link = (string)$this->scopeConfig->getValue(
+        $link = (string) $this->scopeConfig->getValue(
             self::PLAUSIBLE_ADMIN_STATS_SHARED_LINK,
             ScopeInterface::SCOPE_WEBSITE,
             $websiteId
         );
 
-        if (!str_starts_with($link, $this->getInstanceUrl() . '/share')) {
+        if (! str_starts_with($link, $this->getInstanceUrl() . '/share')) {
             return '';
         }
 

@@ -12,8 +12,6 @@ namespace PixelOpen\Plausible\Plugin;
 use Magento\Checkout\Controller\Cart\Index;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Exception\NoSuchEntityException;
 use PixelOpen\Plausible\Helper\Config;
 use PixelOpen\Plausible\Session\Goals;
 
@@ -23,10 +21,6 @@ class GoalCart
 
     protected Session $checkoutSession;
 
-    /**
-     * @param Goals $goals
-     * @param Session $checkoutSession
-     */
     public function __construct(
         Goals $goals,
         Session $checkoutSession
@@ -37,12 +31,6 @@ class GoalCart
 
     /**
      * Add goal when customer visits the cart
-     *
-     * @param Index $subject
-     * @param ResultInterface $result
-     * @return ResultInterface
-     * @throws LocalizedException
-     * @throws NoSuchEntityException
      */
     public function afterExecute(Index $subject, ResultInterface $result): ResultInterface
     {

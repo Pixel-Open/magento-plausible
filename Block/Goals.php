@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace PixelOpen\Plausible\Block;
 
-use PixelOpen\Plausible\Helper\Config;
-use PixelOpen\Plausible\Session\Goals as GoalsSession;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
+use PixelOpen\Plausible\Helper\Config;
+use PixelOpen\Plausible\Session\Goals as GoalsSession;
 
 class Goals extends Template
 {
@@ -25,10 +25,6 @@ class Goals extends Template
 
     /**
      * @param Template\Context $context
-     * @param Config $config
-     * @param GoalsSession $goals
-     * @param Json $json
-     * @param array $data
      */
     public function __construct(
         Context $context,
@@ -44,17 +40,11 @@ class Goals extends Template
         parent::__construct($context, $data);
     }
 
-    /**
-     * @return bool
-     */
     public function isEnabled(): bool
     {
         return $this->config->isGoalsEnabled();
     }
 
-    /**
-     * @return string
-     */
     public function getJsLayout(): string
     {
         $this->jsLayout['components']['plausible']['config']['reload'] = $this->goals->needReload();

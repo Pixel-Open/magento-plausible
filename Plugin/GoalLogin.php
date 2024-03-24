@@ -18,9 +18,6 @@ class GoalLogin
 {
     protected Goals $goals;
 
-    /**
-     * @param Goals $goals
-     */
     public function __construct(
         Goals $goals
     ) {
@@ -29,10 +26,6 @@ class GoalLogin
 
     /**
      * Add goal after customer was connected
-     *
-     * @param AccountManagementInterface $subject
-     * @param CustomerInterface $result
-     * @return CustomerInterface
      */
     public function afterAuthenticate(AccountManagementInterface $subject, CustomerInterface $result): CustomerInterface
     {

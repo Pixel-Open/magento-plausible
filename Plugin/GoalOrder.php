@@ -28,12 +28,6 @@ class GoalOrder
 
     protected Config $config;
 
-    /**
-     * @param Goals $goals
-     * @param Session $checkoutSession
-     * @param SuccessValidator $successValidator
-     * @param Config $config
-     */
     public function __construct(
         Goals $goals,
         Session $checkoutSession,
@@ -48,19 +42,18 @@ class GoalOrder
 
     /**
      * Add goal when order succeeds
-     *
-     * @param Success $subject
-     * @return null
      */
     public function beforeExecute(Success $subject)
     {
-        if (!$this->successValidator->isValid()) {
+        if (! $this->successValidator->isValid()) {
             return null;
         }
 
-        $order = $subject->getOnepage()->getCheckout()->getLastRealOrder();
+        $order = $subject->getOnepage()
+            ->getCheckout()
+            ->getLastRealOrder();
 
-        if (!$order) {
+        if (! $order) {
             return null;
         }
 
@@ -71,10 +64,6 @@ class GoalOrder
 
     /**
      * Reload only when customer is not redirected
-     *
-     * @param Success $subject
-     * @param ResultInterface $result
-     * @return ResultInterface
      */
     public function afterExecute(Success $subject, ResultInterface $result): ResultInterface
     {
@@ -86,19 +75,18 @@ class GoalOrder
     }
 
     /**
-     * @param OrderInterface $order
      * @return mixed[]
      */
     public function getRevenue(OrderInterface $order): array
     {
-        if (!$this->config->isRevenueTrackingEnabled()) {
+        if (! $this->config->isRevenueTrackingEnabled()) {
             return [];
         }
 
         return [
             'revenue' => [
                 'currency' => $order->getOrderCurrencyCode(),
-                'amount' => (float)$order->getGrandTotal(),
+                'amount' => (float) $order->getGrandTotal(),
             ],
         ];
     }

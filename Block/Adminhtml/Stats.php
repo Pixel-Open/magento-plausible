@@ -18,20 +18,13 @@ use PixelOpen\Plausible\Helper\Config;
 class Stats extends Template
 {
     /**
-     * @var string $_template
+     * @var string
      * @phpcs:disable
      */
     protected $_template = 'PixelOpen_Plausible::stats.phtml';
 
     protected Config $config;
 
-    /**
-     * @param Context $context
-     * @param Config $config
-     * @param array $data
-     * @param JsonHelper|null $jsonHelper
-     * @param DirectoryHelper|null $directoryHelper
-     */
     public function __construct(
         Context $context,
         Config $config,
@@ -46,43 +39,30 @@ class Stats extends Template
 
     /**
      * Is Plausible admin stats enabled
-     *
-     * @return bool
      */
     public function canShow(): bool
     {
         return $this->config->isAdminStatsEnabled();
     }
 
-    /**
-     * @return string
-     */
     public function getSharedLink(): string
     {
         return $this->config->getAdminStatsSharedLink($this->getWebsiteId());
     }
 
-    /**
-     * @return string
-     */
     public function getInstanceUrl(): string
     {
         return $this->config->getInstanceUrl();
     }
 
-    /**
-     * @return int|null
-     */
     public function getWebsiteId(): ?int
     {
-        $websiteId = $this->getRequest()->getParam('website');
+        $websiteId = $this->getRequest()
+            ->getParam('website');
 
-        return $websiteId ? (int)$websiteId : null;
+        return $websiteId ? (int) $websiteId : null;
     }
 
-    /**
-     * @return string
-     */
     public function getConfigLink(): string
     {
         return $this->getUrl(

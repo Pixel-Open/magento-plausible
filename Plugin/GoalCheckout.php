@@ -19,9 +19,6 @@ class GoalCheckout
 {
     protected Goals $goals;
 
-    /**
-     * @param Goals $goals
-     */
     public function __construct(
         Goals $goals
     ) {
@@ -31,8 +28,6 @@ class GoalCheckout
     /**
      * Add goal when customer visits the checkout
      *
-     * @param Index $subject
-     * @param ResultInterface $result
      * @return Page
      */
     public function afterExecute(Index $subject, ResultInterface $result): ResultInterface

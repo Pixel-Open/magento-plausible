@@ -18,10 +18,6 @@ class Goals
 
     protected Config $config;
 
-    /**
-     * @param Session $session
-     * @param Config $config
-     */
     public function __construct(
         Session $session,
         Config $config
@@ -33,18 +29,18 @@ class Goals
     /**
      * Add or update a goal
      *
-     * @param string $goal
      * @param string[] $properties
      * @param mixed[] $additional
-     * @return Goals
      */
     public function add(string $goal, array $properties = [], array $additional = []): Goals
     {
         $goals = $this->get();
 
         $name = $this->config->getGoalName($goal);
-        if (!empty($name)) {
-            $goals[$name] = array_merge(['props' => $properties], $additional);
+        if (! empty($name)) {
+            $goals[$name] = array_merge([
+                'props' => $properties,
+            ], $additional);
         }
 
         return $this->set($goals);
@@ -52,7 +48,6 @@ class Goals
 
     /**
      * @param mixed[] $goals
-     * @return Goals
      */
     public function set(array $goals): Goals
     {
@@ -86,17 +81,11 @@ class Goals
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function needReload(): bool
     {
-        return (bool)$this->session->getPlausibleReload();
+        return (bool) $this->session->getPlausibleReload();
     }
 
-    /**
-     * @return Goals
-     */
     public function reset(): Goals
     {
         $this->session->setPlausibleGoals([]);
