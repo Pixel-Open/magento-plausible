@@ -26,17 +26,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-
 
+      - name: Add HTTP basic auth credentials
+        run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/auth.json
+
       - name: Install dependencies
-        env:
-          COMPOSER_AUTH_JSON: |
-            {
-                "http-basic": {
-                    "repo.magento.com": {
-                        "username": "${{ secrets.MAGENTO_USERNAME }}",
-                        "password": "${{ secrets.MAGENTO_PASSWORD }}"
-                    }
-                }
-            }
         run: composer install --no-interaction --no-progress
 
       - name: Run Easy Coding Standard
