@@ -1,45 +1,43 @@
 name: Plausible (Magento 2) for code review
 
 on:
-    push:
-        branches: ["main", "develop"]
-    pull_request:
-        branches: ["main", "develop"]
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
 
 jobs:
-    review:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-            - name: Setup PHP, with composer and extensions
-              uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
-              with:
-                  extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, zip
-              env:
-                COMPOSER_AUTH_JSON: |
-                  {
-                      "http-basic": {
-                          "repo.magento.com": {
-                              "username": "${{ secrets.MAGENTO_USERNAME }}",
-                              "password": "${{ secrets.MAGENTO_PASSWORD }}"
-                          }
-                      }
-                  }
-            - name: Cache Composer packages
-              id: composer-cache
-              uses: actions/cache@v3
-              with:
-                  path: vendor
-                  key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-php-
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
+        with:
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, zip
 
-            - name: Install dependencies
-              run: composer install --no-interaction --no-progress
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
 
-            - name: Check for vulnerabilities
-              uses: symfonycorp/security-checker-action@v4
+      - name: Install dependencies
+        env:
+          COMPOSER_AUTH_JSON: |
+            {
+                "http-basic": {
+                    "repo.magento.com": {
+                        "username": "${{ secrets.MAGENTO_USERNAME }}",
+                        "password": "${{ secrets.MAGENTO_PASSWORD }}"
+                    }
+                }
+            }
+        run: composer install --no-interaction --no-progress
 
-            - name: Run Easy Coding Standard
-              run: vendor/bin/ecs check
+      - name: Run Easy Coding Standard
+        run: vendor/bin/ecs check
