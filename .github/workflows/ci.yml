@@ -16,7 +16,16 @@ jobs:
               uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
               with:
                   extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, zip
-
+              env:
+                COMPOSER_AUTH_JSON: |
+                  {
+                      "http-basic": {
+                          "repo.magento.com": {
+                              "username": "${{ secrets.MAGENTO_USERNAME }}",
+                              "password": "${{ secrets.MAGENTO_PASSWORD }}"
+                          }
+                      }
+                  }
             - name: Cache Composer packages
               id: composer-cache
               uses: actions/cache@v3
