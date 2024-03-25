@@ -1,36 +1,40 @@
 name: Plausible (Magento 2) for code review
 
 on:
-    push:
-        branches: ["main", "develop"]
-    pull_request:
-        branches: ["main", "develop"]
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
 
 jobs:
-    review:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-            - name: Setup PHP, with composer and extensions
-              uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
-              with:
-                  extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, zip
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, zip
 
-            - name: Cache Composer packages
-              id: composer-cache
-              uses: actions/cache@v3
-              with:
-                  path: vendor
-                  key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-php-
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
 
-            - name: Install dependencies
-              run: composer install --no-interaction --no-progress
+      - name: Copy composer for ci
+        run: php -r "copy('composer.json.ci', 'composer.json');"
 
-            - name: Check for vulnerabilities
-              uses: symfonycorp/security-checker-action@v4
+      - name: Add HTTP basic auth credentials
+        run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/auth.json
 
-            - name: Run Easy Coding Standard
-              run: vendor/bin/ecs check
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress
+
+      - name: Run Easy Coding Standard
+        run: vendor/bin/ecs check
