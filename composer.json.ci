@@ -21,6 +21,12 @@
       "PixelOpen\\Plausible\\": ""
     }
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.magento.com/"
+    }
+  ],
   "authors": [
     {
       "name": "Pixel Open",
@@ -28,6 +34,11 @@
       "role": "Developer"
     }
   ],
+  "config": {
+    "allow-plugins": {
+      "magento/composer-dependency-version-audit-plugin": true
+    }
+  },
   "require-dev": {
     "symplify/easy-coding-standard": "^12.1"
   }
