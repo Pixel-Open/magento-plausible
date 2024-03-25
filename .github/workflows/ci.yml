@@ -27,7 +27,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-
 
-      - name: Copy .env
+      - name: Copy composer for ci
         run: php -r "copy('composer.json.ci', 'composer.json');"
 
       - name: Add HTTP basic auth credentials
