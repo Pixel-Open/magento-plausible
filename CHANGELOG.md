@@ -1,3 +1,7 @@
+## 100.2.2
+
+- Magento 2.4.7 CSP compatibility
+
 ## 100.2.1
 
 - Revenue Tracking feature added
