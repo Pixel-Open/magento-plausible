@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Copyright (C) 2023 Pixel Développement
+ * Copyright (C) 2024 Pixel Développement
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -15,6 +15,9 @@
         <plugin name="pixel_open_plausible_goal_register" type="PixelOpen\Plausible\Plugin\GoalRegister" />
         <plugin name="pixel_open_plausible_goal_login" type="PixelOpen\Plausible\Plugin\GoalLogin" />
     </type>
+    <type name="Magento\Customer\Controller\Ajax\Login">
+        <plugin name="pixel_open_plausible_goal_login_ajax" type="PixelOpen\Plausible\Plugin\GoalLoginAjax" />
+    </type>
     <type name="Magento\Checkout\Controller\Cart\Index">
         <plugin name="pixel_open_plausible_goal_cart" type="PixelOpen\Plausible\Plugin\GoalCart" />
     </type>
@@ -23,6 +26,12 @@
     </type>
     <type name="Magento\Checkout\Controller\Onepage\Success">
         <plugin name="pixel_open_plausible_goal_order" type="PixelOpen\Plausible\Plugin\GoalOrder" />
+    </type>
+    <type name="Magento\Catalog\Controller\Product\View">
+        <plugin name="pixel_open_plausible_goal_product" type="PixelOpen\Plausible\Plugin\GoalProduct" />
+    </type>
+    <type name="Magento\Catalog\Controller\Category\View">
+        <plugin name="pixel_open_plausible_goal_category" type="PixelOpen\Plausible\Plugin\GoalCategory" />
     </type>
     <type name="Magento\Customer\CustomerData\SectionPoolInterface">
         <arguments>

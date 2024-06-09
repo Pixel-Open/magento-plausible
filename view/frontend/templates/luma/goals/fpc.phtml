@@ -1,0 +1,7 @@
+<?php /** @var \PixelOpen\Plausible\Block\Goals $block */ ?>
+<?php /** @var \Magento\Framework\Escaper $escaper */ ?>
+<script>
+    <?php foreach ($block->getGoals() as $name => $params): ?>
+        plausible('<?= $escaper->escapeJs($name) ?>', <?= /* @noEscape */ $params ?>);
+    <?php endforeach; ?>
+</script>

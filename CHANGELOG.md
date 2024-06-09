@@ -1,3 +1,9 @@
+## 100.3.0
+
+- New goals for product and category pages
+- Allow to always send a goal on a full cached page
+- "Login" goal is now sent with ajax login
+
 ## 100.2.2
 
 - Magento 2.4.7 CSP compatibility

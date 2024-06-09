@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2023 Pixel Développement
+ * Copyright (C) 2024 Pixel Développement
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -42,6 +42,10 @@ class Config extends AbstractHelper
 
     public const PLAUSIBLE_GOAL_ORDER = 'order';
 
+    public const PLAUSIBLE_GOAL_PRODUCT = 'product';
+
+    public const PLAUSIBLE_GOAL_CATEGORY = 'category';
+
     /**
      * Retrieve Instance URL
      */
@@ -49,7 +53,7 @@ class Config extends AbstractHelper
     {
         $url = $this->scopeConfig->getValue(self::PLAUSIBLE_TRACKING_INSTANCE_URL, ScopeInterface::SCOPE_STORE);
 
-        if (! $url) {
+        if (!$url) {
             $url = self::PLAUSIBLE_SAAS_INSTANCE_URL;
         }
 
@@ -109,7 +113,7 @@ class Config extends AbstractHelper
             $websiteId
         );
 
-        if (! str_starts_with($link, $this->getInstanceUrl() . '/share')) {
+        if (!str_starts_with($link, $this->getInstanceUrl() . '/share')) {
             return '';
         }
 
