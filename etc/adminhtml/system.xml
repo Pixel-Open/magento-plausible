@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Copyright (C) 2023 Pixel Développement
+ * Copyright (C) 2024 Pixel Développement
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -85,6 +85,20 @@
                 <field id="order" translate="comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Goal Order</label>
                     <comment>Plausible goal name when customer completes an order. Leave empty to ignore.</comment>
+                    <depends>
+                        <field id="*/goals/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="product" translate="comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Goal Product</label>
+                    <comment>Plausible goal name when customer visits a product page. Leave empty to ignore.</comment>
+                    <depends>
+                        <field id="*/goals/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="category" translate="comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Goal Category</label>
+                    <comment>Plausible goal name when customer visits a category page. Leave empty to ignore.</comment>
                     <depends>
                         <field id="*/goals/enabled">1</field>
                     </depends>

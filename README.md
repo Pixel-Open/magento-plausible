@@ -70,6 +70,8 @@ The module includes goal events when enabled in module configuration.
 | Goal Cart     | Plausible goal name when customer goes to the cart. Leave empty to ignore.       |
 | Goal Checkout | Plausible goal when customer access the checkout. Leave empty to ignore.         |
 | Goal Order    | Plausible goal name when customer completes an order. Leave empty to ignore.     |
+| Goal Product  | Plausible goal name when customer visits a product page. Leave empty to ignore.  |
+| Goal Category | Plausible goal name when customer visits a category page. Leave empty to ignore. |
 
 You need to add goal events in your Plausible website configuration:
 
@@ -154,8 +156,6 @@ When this controller is reached and the page displayed, the goal named "page_vie
 
 The **send** method allows to send goals. The goal will persist until **send** method is requested for the current session.
 
-**Note:** the page must be completely displayed before the goals are sent. The "plausible" section is refreshed when the customer data is reloaded.
-
 Add custom properties if needed (Business Plan only):
 
 ```php
@@ -172,6 +172,20 @@ To send goals on a full cached page after any action, add the action in a `secti
         <section name="plausible" />
     </action>
 </config>
+```
+
+To always send goal on a full cached page, add a child block to the native block `pixel_open_plausible_goals`:
+
+```xml
+<?xml version="1.0"?>
+<!-- Vendor/MyModule/view/frontend/layout/my_fpc_page.xml -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="pixel_open_plausible_goals">
+            <block name="pixel_open_plausible_goals_fpc" class="PixelOpen\Plausible\Block\Goals" template="PixelOpen_Plausible::luma/goals/fpc.phtml" />
+        </referenceBlock>
+    </body>
+</page>
 ```
 
 To send goals from a custom RequireJS script, ask to reload the **plausible** section:

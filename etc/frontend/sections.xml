@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Copyright (C) 2023 Pixel Développement
+ * Copyright (C) 2024 Pixel Développement
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,7 +14,10 @@
     <action name="customer/account/createPost">
         <section name="plausible" />
     </action>
-    <action name="customer/account/LoginPost">
+    <action name="customer/account/loginPost">
+        <section name="plausible" />
+    </action>
+    <action name="customer/ajax/login">
         <section name="plausible" />
     </action>
 </config>

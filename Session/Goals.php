@@ -37,7 +37,7 @@ class Goals
         $goals = $this->get();
 
         $name = $this->config->getGoalName($goal);
-        if (! empty($name)) {
+        if (!empty($name)) {
             $goals[$name] = array_merge([
                 'props' => $properties,
             ], $additional);
@@ -83,7 +83,7 @@ class Goals
 
     public function needReload(): bool
     {
-        return (bool) $this->session->getPlausibleReload();
+        return (bool)$this->session->getPlausibleReload();
     }
 
     public function reset(): Goals

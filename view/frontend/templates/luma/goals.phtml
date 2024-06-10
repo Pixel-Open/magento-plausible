@@ -1,4 +1,5 @@
 <?php /** @var \PixelOpen\Plausible\Block\Goals $block */ ?>
+<?php /** @var \Magento\Framework\Escaper $escaper */ ?>
 <?php if ($block->isEnabled()): ?>
 <script type="text/x-magento-init">
     {
@@ -7,4 +8,5 @@
         }
     }
 </script>
+<?= $block->getChildHtml('pixel_open_plausible_goals_fpc') ?>
 <?php endif; ?>

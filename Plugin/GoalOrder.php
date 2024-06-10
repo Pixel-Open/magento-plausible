@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2023 Pixel Développement
+ * Copyright (C) 2024 Pixel Développement
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -45,7 +45,7 @@ class GoalOrder
      */
     public function beforeExecute(Success $subject)
     {
-        if (! $this->successValidator->isValid()) {
+        if (!$this->successValidator->isValid()) {
             return null;
         }
 
@@ -53,7 +53,7 @@ class GoalOrder
             ->getCheckout()
             ->getLastRealOrder();
 
-        if (! $order) {
+        if (!$order) {
             return null;
         }
 
@@ -79,14 +79,14 @@ class GoalOrder
      */
     public function getRevenue(OrderInterface $order): array
     {
-        if (! $this->config->isRevenueTrackingEnabled()) {
+        if (!$this->config->isRevenueTrackingEnabled()) {
             return [];
         }
 
         return [
             'revenue' => [
                 'currency' => $order->getOrderCurrencyCode(),
-                'amount' => (float) $order->getGrandTotal(),
+                'amount' => (float)$order->getGrandTotal(),
             ],
         ];
     }
